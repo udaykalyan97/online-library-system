@@ -1,0 +1,23 @@
+*{
+    text-align: center;
+}
+
+.category-section{
+    margin: 20px;
+}
+.category-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-card{
+    margin: 10px;
+}
+
+.book-list{
+    transform: scale(0.8);
+    display: flex;
+}
+
