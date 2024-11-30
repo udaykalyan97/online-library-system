@@ -7,6 +7,7 @@ import Error from './components/Error.jsx';
 // import BookList from './components/BookList.jsx';
 import BookDetails from './components/BookDetails.jsx';
 import PopularBooks from './components/popularBooks.jsx';
+import GenreList from './components/GenreList.jsx';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -41,8 +42,8 @@ const appRouter = createBrowserRouter([
         element: <BookDetails />,
       },
       {
-        path: '/book/:genre',
-        element: <BookDetails />,
+        path: '/Book_Category/:genre',
+        element: <GenreList />,
       },
     ],
     errorElement: <Error />,

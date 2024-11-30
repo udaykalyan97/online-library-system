@@ -11,10 +11,20 @@ function BookList(){
     
     const [searchText, setSearchText] = useState("");
     const [filteredBooks, setfilteredBooks] = useState([]);
+    const [originalBooks, setOriginalBooks] = useState([]);
 
-    function handleSearch(){
-        console.log("Search Text", searchText);
-        setfilteredBooks(filteredBooks.filter((book)=>book.title.toLowerCase().includes(searchText.toLowerCase())))
+    function handleSearch() {
+        if (!searchText || searchText.trim() === "") {  
+            setfilteredBooks(originalBooks);
+        } else {
+            const lowerCaseSearchText = searchText.toLowerCase();
+            setfilteredBooks(
+                originalBooks.filter((book) =>
+                    book.title.toLowerCase().includes(lowerCaseSearchText) ||
+                    book.author.toLowerCase().includes(lowerCaseSearchText)
+                )
+            );
+        }
     }
 
     const {setUserName} = useContext(userContext);
@@ -23,6 +33,7 @@ function BookList(){
 
     useEffect(()=>{
         if(data){
+            setOriginalBooks(data);
             setfilteredBooks(data);
         };
     },[data]);

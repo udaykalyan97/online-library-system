@@ -21,7 +21,6 @@ function Book(props){
                 <h2 className="book-title">{props.bookDetails.title}</h2>
                 <p className="book-author">{props.bookDetails.author}</p>
                 <p className="book-description">{props.bookDetails.description}</p>
-                <p className="book-description">{data.loggedInUser}</p>
             </div>
         </div>
     )

@@ -35,22 +35,32 @@ function BookDetails() {
 
     return (
         <>
-            <h1 >{`Book Details for book with id ${params.id}`}</h1>
-            <div>
-                <img
-                    src={filteredBook.cover_image}
-                    alt="book image"
-                    height="300px"
-                    width="200px"
-                />
-                <h2>{filteredBook.title}</h2>
-                <h3>{filteredBook.author}</h3>
-                <h3>{filteredBook.publication_year}</h3>
-                <h3>{filteredBook.genre}</h3>
-                <h3>{filteredBook.description}</h3>
-                <button onClick={()=>handleAddBook(filteredBook)}>Add to Cart</button>
-                <button onClick={handleRemoveBook}>Remove Item from cart</button>
-            </div>
+            <h1 className="book-details-header">
+    {`Book Details for book with id ${params.id}`}
+</h1>
+<div className="book-details-container">
+    <img
+        src={filteredBook.cover_image}
+        alt="book image"
+        className="book-image"
+    />
+    <div className="book-info">
+        <h2 className="book-title">{filteredBook.title}</h2>
+        <h3 className="book-author">{filteredBook.author}</h3>
+        <h3 className="book-year">{filteredBook.publication_year}</h3>
+        <h3 className="book-genre">{filteredBook.genre}</h3>
+        <h3 className="book-description">{filteredBook.description}</h3>
+        <div className="button-group">
+            <button onClick={() => handleAddBook(filteredBook)} className="add-to-cart-button">
+                Add to Cart
+            </button>
+            <button onClick={handleRemoveBook} className="remove-from-cart-button">
+                Remove Item from Cart
+            </button>
+        </div>
+    </div>
+</div>
+
         </>
     );
 }

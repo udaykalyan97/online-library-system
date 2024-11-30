@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import '../index.css';
 import './HomePage.css';
 import { popularBooks } from "../utils/popularBooks.js"
@@ -7,7 +7,11 @@ import { genreList } from "../utils/genreList.js";
 
 
 
+
 function HomePage() {
+
+    const params = useParams();
+    console.log(params)
     return (
         <>
             <div className="category-section">
