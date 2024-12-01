@@ -8,6 +8,7 @@ import Error from './components/Error.jsx';
 import BookDetails from './components/BookDetails.jsx';
 import PopularBooks from './components/popularBooks.jsx';
 import GenreList from './components/GenreList.jsx';
+import AddBook from './components/AddBook.jsx';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -28,6 +29,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/',
         element: <PopularBooks />, 
+      },
+      {
+        path: '/add_book',
+        element: <AddBook />, 
       },
       {
         path: '/browse_books',
