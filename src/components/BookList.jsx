@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { dummyBookData } from "../utils/dummyBookData"; // Import dummy data directly
+import { useSelector } from "react-redux"; 
 import Book from "./Book.jsx";
 import "./style.css";
 
 function BookList() {
   const [searchText, setSearchText] = useState("");
-  const [filteredBooks, setFilteredBooks] = useState(dummyBookData); // Initialize with dummyBookData
-  const [originalBooks, setOriginalBooks] = useState(dummyBookData); // Initialize with dummyBookData
+  const books = useSelector((state) => state.books.books); 
+  const [filteredBooks, setFilteredBooks] = useState(books); 
+  const [originalBooks, setOriginalBooks] = useState(books); 
 
-  
   const handleSearch = () => {
     if (!searchText.trim()) {
       setFilteredBooks(originalBooks);
@@ -24,6 +24,11 @@ function BookList() {
       );
     }
   };
+
+  useEffect(() => {
+    setOriginalBooks(books);
+    setFilteredBooks(books);
+  }, [books]); 
 
   return (
     <>

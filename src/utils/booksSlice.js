@@ -4,7 +4,7 @@ import { dummyBookData } from './dummyBookData';
 const booksSlice = createSlice({
   name: "books",
   initialState: {
-    books: [],
+    books: [...dummyBookData],
   },
   reducers: {
     addBook: (state, action) => {
