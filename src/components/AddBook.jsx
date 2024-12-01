@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from '../utils/booksSlice';  // Ensure correct import
 import './style.css';
+import { Link, useNavigate} from 'react-router-dom';
+import BookList from './BookList';
 
 function AddBook() {
   const [title, setTitle] = useState('');
@@ -9,40 +11,65 @@ function AddBook() {
   const [publicationYear, setPublicationYear] = useState('');
   const [author, setAuthor] = useState('');
   const [coverImage, setCoverImage] = useState('');
-  const [genre, setGenre] = useState('');
+  const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books.books);
+  const navigate = useNavigate();
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!title.trim()) {
+      errors.title = 'Please enter a book title.';
+    }
+
+    if (!description.trim()) {
+      errors.description = 'Please enter a description.';
+    }
+
+    if (!author.trim()) {
+      errors.author = 'Please enter the author name.';
+    }
+
+    if (!publicationYear) {
+      errors.publicationYear = 'Please enter the year of publication.';
+    } else if (isNaN(publicationYear) || publicationYear > new Date().getFullYear()) {
+      errors.publicationYear = 'Please enter a valid year 0 AD and the current year.';
+    }
+
+    if (!coverImage.trim()) {
+      errors.coverImage = 'Please enter a cover image URL.';
+    } else if (!/^https?:\/\//i.test(coverImage)) {
+      errors.coverImage = 'Please enter a valid URL for the cover image.';
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0; 
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Ensure that title is not empty
-    if (!title.trim()) {
-      alert('Please enter a book title.');
+    if (!validateForm()) {
       return;
     }
 
-    // Create a book object (You can add more fields here like author, etc.)
+    
     const newBook = {
-      id: Date.now(),  // or any other unique ID logic
+      id: books.length + 1,  
       title,
       description,
-      publication_year: publicationYear,  // Use publication_year as the key
-      cover_image: coverImage,  // Use cover_image as the key
+      publication_year: publicationYear,  
+      cover_image: coverImage,  
       author,
     };
 
-    // Dispatch the action to add the book
+    
     dispatch(addBook(newBook));
 
-    // Clear the title field after submission
-    setTitle('');
-    setDescription('');
-    setAuthor('');
-    setGenre('');
-    setPublicationYear('');
-    setCoverImage('');
+    navigate('/browse_books')
+    
   };
 
   return (
@@ -57,9 +84,10 @@ function AddBook() {
             name="title"
             placeholder="Enter Book Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)} // Update the title state
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
+          {errors.title && <p className="error">{errors.title}</p>}
         </div>
 
         <div className="form-group">
@@ -70,9 +98,10 @@ function AddBook() {
             name="description"
             placeholder="Enter Description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)} // Update the description state
+            onChange={(e) => setDescription(e.target.value)}
             required
           />
+          {errors.description && <p className="error">{errors.description}</p>}
         </div>
 
         <div className="form-group">
@@ -83,9 +112,10 @@ function AddBook() {
             name="author"
             placeholder="Enter Author name"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)} // Update the author state
+            onChange={(e) => setAuthor(e.target.value)}
             required
           />
+          {errors.author && <p className="error">{errors.author}</p>}
         </div>
 
         <div className="form-group">
@@ -96,9 +126,10 @@ function AddBook() {
             name="publication_year"
             placeholder="Enter Year of Publication"
             value={publicationYear}
-            onChange={(e) => setPublicationYear(e.target.value)} 
+            onChange={(e) => setPublicationYear(e.target.value)}
             required
           />
+          {errors.publicationYear && <p className="error">{errors.publicationYear}</p>}
         </div>
 
         <div className="form-group">
@@ -109,16 +140,16 @@ function AddBook() {
             name="cover_image"
             placeholder="Enter Cover Image URL"
             value={coverImage}
-            onChange={(e) => setCoverImage(e.target.value)} 
+            onChange={(e) => setCoverImage(e.target.value)}
             required
           />
+          {errors.coverImage && <p className="error">{errors.coverImage}</p>}
         </div>
 
         <button className="submit-button" type="submit">Add Book</button>
       </form>
 
-      {/* Display the list of books */}
-      <div className="added-books">
+      {/* <div className="added-books">
         <h3>Newly Added Books</h3>
         {books.length > 0 ? (
           books.map((book, index) => (
@@ -135,7 +166,7 @@ function AddBook() {
         ) : (
           <p>No books added yet.</p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

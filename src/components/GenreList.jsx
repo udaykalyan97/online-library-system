@@ -5,14 +5,15 @@ import { useDispatch } from "react-redux";
 import { addItem, removeItem} from "../utils/cartSlice";
 import Book from "./Book";
 import "./style.css"
+import { useSelector } from "react-redux"; 
 
 
 function GenreList() {
-    // const params = useParams();
+   
     const params = useParams();
     const [filteredBooks, setfilteredBooks] = useState([]);
 
-    const { data, error, loading } = useFetch("/api");
+    const data = useSelector((state) => state.books.books);
 
     const dispatch = useDispatch();
 
@@ -33,8 +34,6 @@ function GenreList() {
         }
     }, [data, params.genre]);
 
-    if (loading) return <h2>Loading...</h2>;
-    if (error) return <h2>Error: {error.message}</h2>;
     if (!filteredBooks) return <h2>No books found under {params.genre} genre</h2>;
 
     return (

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem} from "../utils/cartSlice";
 import "./style.css"
 import { dummyBookData } from "../utils/dummyBookData";
@@ -10,7 +10,7 @@ function BookDetails() {
     const params = useParams();
     const [filteredBook, setFilteredBook] = useState(null);
 
-    const data = dummyBookData;
+    const data = useSelector((state) => state.books.books);
     
     const dispatch = useDispatch();
 

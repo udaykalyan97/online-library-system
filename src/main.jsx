@@ -48,7 +48,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: '/Book_Category/:genre',
-        element: <GenreList />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <GenreList />
+          </Suspense>
+        )
       },
     ],
     errorElement: <Error />,
