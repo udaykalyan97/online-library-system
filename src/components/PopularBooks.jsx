@@ -1,10 +1,7 @@
 import Book from "./Book.jsx"
 import "./style.css"
-// import {Books} from "../utils/mockData.js"
 import {useState, useEffect, useContext} from "react"
 import { Link } from "react-router-dom"
-import useFetch from "../utils/useFetch.js"
-import userContext from "../utils/useContext.js"
 import { popularBooks } from "../utils/popularBooks.js"
 
 

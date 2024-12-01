@@ -114,7 +114,7 @@ function AddBook() {
           />
         </div>
 
-        <button type="submit">Add Book</button>
+        <button className="submit-button" type="submit">Add Book</button>
       </form>
 
       {/* Display the list of books */}

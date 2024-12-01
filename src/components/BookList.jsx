@@ -3,17 +3,13 @@ import { Link } from "react-router-dom";
 import { dummyBookData } from "../utils/dummyBookData"; // Import dummy data directly
 import Book from "./Book.jsx";
 import "./style.css";
-import userContext from "../utils/useContext.js";
 
 function BookList() {
   const [searchText, setSearchText] = useState("");
   const [filteredBooks, setFilteredBooks] = useState(dummyBookData); // Initialize with dummyBookData
   const [originalBooks, setOriginalBooks] = useState(dummyBookData); // Initialize with dummyBookData
 
-  // Context example (if used elsewhere)
-  const { setUserName } = useContext(userContext);
-
-  // Search handler
+  
   const handleSearch = () => {
     if (!searchText.trim()) {
       setFilteredBooks(originalBooks);

@@ -231,7 +231,7 @@ textarea{
     font-size: 14px;
   }
   
-  button {
+  .submit-button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -242,11 +242,10 @@ textarea{
     cursor: pointer;
   }
   
-  button:hover {
+  .submit-button:hover {
     background-color: #0056b3;
   }
   
-  /* Display the list of books */
   .added-books {
     margin-top: 40px;
     width: 100%;

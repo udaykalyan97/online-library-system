@@ -1,17 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import useFetch from "../utils/useFetch";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem} from "../utils/cartSlice";
 import "./style.css"
+import { dummyBookData } from "../utils/dummyBookData";
 
 
 function BookDetails() {
     const params = useParams();
     const [filteredBook, setFilteredBook] = useState(null);
 
-    const { data, error, loading } = useFetch("/api");
-
+    const data = dummyBookData;
+    
     const dispatch = useDispatch();
 
     function handleAddBook(item){
@@ -29,8 +29,7 @@ function BookDetails() {
         }
     }, [data, params.id]);
 
-    if (loading) return <h2>Loading...</h2>;
-    if (error) return <h2>Error: {error.message}</h2>;
+    
     if (!filteredBook) return <h2>No book found with ID {params.id}</h2>;
 
     return (
