@@ -22,7 +22,7 @@ Follow the steps below to run the application on your local machine.
 First, clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/your-username/book-management-app.git
+git clone https://github.com/udaykalyan97/book-management-app.git
 cd book-management-app
 
 ```
@@ -40,14 +40,15 @@ npm install
 
 This will install all the necessary packages defined in the package.json file.
 
-## Run the Application
-After the dependencies are installed, run the following command to start the development server:
+## How to Run the Project
 
-```bash
-npm start
-```
+- Start the development server:
+    ```bash
+    npm run dev
 
-This will start the React application and automatically open it in your browser at http://localhost:3000.
+- Open your browser and visit:
+    http://localhost:5173
+
 
 ## Visit the Application
 Once the server is running, you can open the app in your browser and start using the application. You will be able to:
