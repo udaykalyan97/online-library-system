@@ -5,6 +5,11 @@
     text-decoration: none;
 }
 
+.welcome{
+    color: green;
+    margin: 50px;
+}
+
 .book-cover {
     width: 100%;
     border-radius: 10px;
@@ -274,7 +279,6 @@ textarea{
     font-weight: 600;
     margin: 4px 0;
   }
-  
 
 /* Media Queries */
 @media (max-width: 1024px) {

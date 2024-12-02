@@ -57,7 +57,7 @@ export const popularBooks = [
             "Adventure"
         ],
         "description": "An epic fantasy saga about the quest to destroy the One Ring.",
-        "cover_image": "https://m.media-amazon.com/images/I/91qW00x+vWL._SL1500_.jpg"
+        "cover_image": "https://m.media-amazon.com/images/I/514I5nYNocL.jpg"
     },
 ];
 

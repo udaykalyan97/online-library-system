@@ -14,6 +14,9 @@ function HomePage() {
     console.log(params)
     return (
         <>
+            <div className="welcome">
+                <h1>Welcome to Online Library System!</h1>
+            </div>
             <div className="category-section">
                 <h2 className="section-title">Book Categories</h2>
                 <div className="category-list">
@@ -27,7 +30,7 @@ function HomePage() {
 
             <div className="popular-books-section">
                 <h2 className="section-title">Popular Books</h2>
-                <div className="book-list">
+                <div className="bookList">
                     {
                         popularBooks.map((data)=>{
                             return (

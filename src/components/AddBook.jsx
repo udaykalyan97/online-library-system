@@ -148,25 +148,6 @@ function AddBook() {
 
         <button className="submit-button" type="submit">Add Book</button>
       </form>
-
-      {/* <div className="added-books">
-        <h3>Newly Added Books</h3>
-        {books.length > 0 ? (
-          books.map((book, index) => (
-            <div key={index} className="book-item">
-              <img src={book.cover_image} alt="" height="200px" width="200px"/>
-              <div>
-                <h4>{book.title}</h4>
-                <h4>{book.author}</h4>
-                <h4>{book.publication_year}</h4>
-                <h4>{book.description}</h4>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No books added yet.</p>
-        )}
-      </div> */}
     </div>
   );
 }
